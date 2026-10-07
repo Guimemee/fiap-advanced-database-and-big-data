@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Advanced Database & Big Data
+Turma 3ECR • Ano 2024
+Checkpoint 04: Processamento Paralelo em Memória com Apache Spark e PySpark
+
+ENUNCIADO ORIGINAL:
+Implementar job distribuído em PySpark para computar a correlação de Pearson e matriz de covariância entre variáveis de processo de 100 GB de logs industriais.

@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Advanced Database & Big Data
+Turma 3ECR • Ano 2024
+Checkpoint 03: Modelagem Wide-Column em Apache Cassandra e Teorema CAP
+
+ENUNCIADO ORIGINAL:
+Dimensionar as tabelas CQL com chaves de partição e clustering keys balanceadas para assegurar escalabilidade linear e latência sub-milisegundo sob modelo AP (Disponibilidade e Tolerância à Partição).

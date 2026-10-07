@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Advanced Database & Big Data
+Turma 3ECR • Ano 2024
+Checkpoint 01: Subconsultas Analíticas e Otimização Avançada em SQL Distribuído
+
+ENUNCIADO ORIGINAL:
+Projetar consultas analíticas com CTEs recursivas e Subconsultas Correlacionadas para processar transações de produção farmacêutica em escala massiva.

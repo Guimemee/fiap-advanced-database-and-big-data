@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Advanced Database & Big Data
+Turma 3ECR • Ano 2024
+Checkpoint 05: Arquitetura Lambda / Kappa e Ingestão em Tempo Real com Kafka
+
+ENUNCIADO ORIGINAL:
+Dimensionar os tópicos e grupos de consumidores Apache Kafka com replicação RF = 3 e semântica Exactly-Once para alimentar a camada de streaming da fábrica.

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060e17" />
+      <stop offset="50%" stop-color="#0c192c" />
+      <stop offset="100%" stop-color="#060e17" />
+    </linearGradient>
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#203e6b" stroke-width="0.8" stroke-opacity="0.4" />
+      <circle cx="40" cy="40" r="1.5" fill="#0284c7" fill-opacity="0.25" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="520" fill="url(#bgGrad)" rx="16" />
+  <rect width="1200" height="520" fill="url(#grid)" rx="16" />
+  <rect width="1196" height="516" x="2" y="2" fill="none" stroke="#0284c7" stroke-width="1.5" stroke-opacity="0.35" rx="14" />
+
+  <path d="M 40 40 L 280 40 L 310 70 L 600 70 L 620 50 L 1160 50" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.3" />
+  <circle cx="280" cy="40" r="3.5" fill="#2563eb" />
+  <circle cx="600" cy="70" r="3.5" fill="#0284c7" />
+  <circle cx="1160" cy="50" r="4" fill="#38bdf8" />
+
+  <g transform="translate(60, 85)">
+    <rect x="0" y="0" width="80" height="28" rx="6" fill="#142845" stroke="#0284c7" stroke-width="1.2" />
+    <text x="40" y="19" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1">FIAP</text>
+    <rect x="92" y="0" width="160" height="28" rx="6" fill="#142845" stroke="#203e6b" stroke-width="1.2" />
+    <text x="172" y="19" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle">3ECR • 2024</text>
+    <rect x="264" y="0" width="200" height="28" rx="6" fill="#142845" stroke="#38bdf8" stroke-width="1" />
+    <text x="364" y="19" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Sanofi EC Pharma Challenge</text>
+  </g>
+
+  <g transform="translate(60, 160)">
+    <text x="0" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" letter-spacing="-0.5">ADVANCED DATABASE &amp; BIG DATA</text>
+    <text x="0" y="80" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500">Arquiteturas Big Data, Bancos NoSQL (MongoDB, Cassandra), Apache Spark, Dat</text>
+    <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Bacharelado em Engenharia da Computação • Acervo Integral de Engenharia</text>
+  </g>
+
+  
+    <g transform="translate(560, 120)">
+      <rect width="270" height="76" rx="10" fill="#142845" stroke="#203e6b" stroke-width="1.2" />
+      <text x="16" y="24" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">PROCESSAMENTO SPARK</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">EM MEMÓRIA</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">RDDs e DataFrames Paralelos</text>
+    </g>
+    <g transform="translate(850, 120)">
+      <rect width="270" height="76" rx="10" fill="#142845" stroke="#203e6b" stroke-width="1.2" />
+      <text x="16" y="24" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">TEOREMA CAP</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">AP / CP</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Consistência Eventual vs Disponibilidade</text>
+    </g>
+    <g transform="translate(560, 210)">
+      <rect width="270" height="76" rx="10" fill="#142845" stroke="#203e6b" stroke-width="1.2" />
+      <text x="16" y="24" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">TAXA DE INGESTÃO</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">50k EPS</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Event Streams com Kafka &amp; Delta Lake</text>
+    </g>
+    <g transform="translate(850, 210)">
+      <rect width="270" height="76" rx="10" fill="#142845" stroke="#203e6b" stroke-width="1.2" />
+      <text x="16" y="24" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">MODELAGEM NOSQL</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">DOCUMENT &amp; COLUMN</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">MongoDB Aggregation &amp; Cassandra CQL</text>
+    </g>
+
+  <g transform="translate(60, 420)">
+    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1">TECNOLOGIAS &amp; METODOLOGIAS DOMINADAS:</text>
+  </g>
+  
+    <g transform="translate(60, 450)">
+      <rect width="151.5" height="28" rx="14" fill="#142845" stroke="#0284c7" stroke-width="1" />
+      <text x="75.75" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🐘 Hadoop &amp; HDFS</text>
+    </g>
+    <g transform="translate(223.5, 450)">
+      <rect width="143.0" height="28" rx="14" fill="#142845" stroke="#0284c7" stroke-width="1" />
+      <text x="71.5" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⚡ Apache Spark</text>
+    </g>
+    <g transform="translate(378.5, 450)">
+      <rect width="151.5" height="28" rx="14" fill="#142845" stroke="#0284c7" stroke-width="1" />
+      <text x="75.75" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🍃 MongoDB NoSQL</text>
+    </g>
+    <g transform="translate(542.0, 450)">
+      <rect width="185.5" height="28" rx="14" fill="#142845" stroke="#0284c7" stroke-width="1" />
+      <text x="92.75" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🏛️ Apache Cassandra</text>
+    </g>
+    <g transform="translate(739.5, 450)">
+      <rect width="168.5" height="28" rx="14" fill="#142845" stroke="#0284c7" stroke-width="1" />
+      <text x="84.25" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🌊 Delta Lakehouse</text>
+    </g>
+    <g transform="translate(920.0, 450)">
+      <rect width="160.0" height="28" rx="14" fill="#142845" stroke="#0284c7" stroke-width="1" />
+      <text x="80.0" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">💊 Desafio Sanofi</text>
+    </g>
+</svg>

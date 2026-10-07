@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIAP • Advanced Database & Big Data | Turma 3ECR • 2024</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <style>
+    :root {
+      --bg-dark: #060e17;
+      --bg-card: #0c192c;
+      --bg-surface: #142845;
+      --border: #203e6b;
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --primary: #0284c7;
+      --secondary: #2563eb;
+      --accent: #38bdf8;
+      --radius: 12px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    [id] { scroll-margin-top: 95px; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10, 14, 23, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 10px 24px;
+    }
+
+    .header-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .header-row-1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-row-1 .brand-fiap {
+      color: var(--primary);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .header-row-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .turma-tag {
+      font-size: 0.82rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .btn-repo-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-repo-top:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+      filter: brightness(1.1);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero-banner {
+      margin-bottom: 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--primary);
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .metric-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .nav-tab {
+      padding: 10px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .nav-tab:hover, .nav-tab.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .cp-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .problem-box, .plot-box {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .box-header {
+      background: var(--bg-surface);
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .box-content {
+      padding: 16px;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .formula-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(129, 140, 248, 0.05));
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .formula-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .formula-latex {
+      font-size: 1.25rem;
+      color: #ffffff;
+      overflow-x: auto;
+      padding: 6px 0;
+    }
+
+    .symbolab-container {
+      margin-bottom: 24px;
+    }
+
+    .symbolab-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .step-header {
+      margin-bottom: 8px;
+    }
+
+    .step-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .step-content {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+
+    .plot-img-container {
+      padding: 16px;
+      background: var(--bg-dark);
+      text-align: center;
+    }
+
+    .plot-img-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 60px;
+    }
+
+    footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="header-row-1">
+        <span class="brand-fiap">FIAP</span>
+        <span class="brand-sep">•</span>
+        <span>Engenharia da Computação</span>
+      </div>
+      <div class="header-row-2">
+        <span class="turma-tag">TURMA 3ECR • 2024</span>
+        <a href="https://github.com/Guimemee/fiap-advanced-database-and-big-data" class="btn-repo-top" target="_blank" rel="noopener">Ver Repositório ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-banner">
+      <img src="card_technologies.svg" alt="FIAP Advanced Database & Big Data Banner" />
+    </div>
+
+    <div class="metrics-grid">
+      
+        <div class="metric-card">
+          <div class="metric-label">PROCESSAMENTO SPARK</div>
+          <div class="metric-val">EM MEMÓRIA</div>
+          <div class="metric-sub">RDDs e DataFrames Paralelos</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">TEOREMA CAP</div>
+          <div class="metric-val">AP / CP</div>
+          <div class="metric-sub">Consistência Eventual vs Disponibilidade</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">TAXA DE INGESTÃO</div>
+          <div class="metric-val">50k EPS</div>
+          <div class="metric-sub">Event Streams com Kafka & Delta Lake</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">MODELAGEM NOSQL</div>
+          <div class="metric-val">DOCUMENT & COLUMN</div>
+          <div class="metric-sub">MongoDB Aggregation & Cassandra CQL</div>
+        </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <a href="#cp1" class="nav-tab active">CP 1: Subconsultas Analíticas e...</a>
+      <a href="#cp2" class="nav-tab">CP 2: Modelagem NoSQL Orientada...</a>
+      <a href="#cp3" class="nav-tab">CP 3: Modelagem Wide-Column em ...</a>
+      <a href="#cp4" class="nav-tab">CP 4: Processamento Paralelo em...</a>
+      <a href="#cp5" class="nav-tab">CP 5: Arquitetura Lambda / Kapp...</a>
+      <a href="#cp6" class="nav-tab">CP 6: Arquitetura Medallion: Ca...</a>
+    </nav>
+
+    
+      <section id="cp1" class="cp-section">
+        <div class="section-badge">CHECKPOINT 01 • 3ECR 2024</div>
+        <h2 class="section-title">Subconsultas Analíticas e Otimização Avançada em SQL Distribuído</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp1')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp1" class="box-content">
+            <p>Projetar consultas analíticas com CTEs recursivas e Subconsultas Correlacionadas para processar transações de produção farmacêutica em escala massiva.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{WITH RECURSIVE } PipelineBatch \text{ AS } (\dots), \quad \text{Speedup} = \frac{T_{serial}}{T_{distribuido}} \approx 8,4\times$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Estruturação com Common Table Expressions Recursivas</span>
+              </div>
+              <div class="step-content">
+                <p>Mapear a genealogia de lotes de medicamentos com rastreabilidade completa.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Análise de Custo do Otimizador Baseado em Custos (CBO)</span>
+              </div>
+              <div class="step-content">
+                <p>Avaliação de estatísticas de histograma para evitar Broadcast Joins ineficientes.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Transformação de Subconsultas Correlacionadas</span>
+              </div>
+              <div class="step-content">
+                <p>Reescrita automática em Window Functions para eliminar loops aninhados O(N^2).</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Particionamento e Co-alocação de Dados</span>
+              </div>
+              <div class="step-content">
+                <p>Particionamento por chave de hash id_lote reduzindo shuffle de rede em 85%.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Analítica</span>
+              </div>
+              <div class="step-content">
+                <p>Execução de consulta analítica sobre 50 milhões de linhas em apenas 1,4 segundos.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_1_cp1/grafico_resolucao.png" alt="Gráfico Subconsultas Analíticas e Otimização Avançada em SQL Distribuído" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp2" class="cp-section">
+        <div class="section-badge">CHECKPOINT 02 • 3ECR 2024</div>
+        <h2 class="section-title">Modelagem NoSQL Orientada a Documentos com MongoDB</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp2')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp2" class="box-content">
+            <p>Modelar coleções JSON flexíveis e construir pipelines de agregação (Aggregation Framework: $match, $group, $unwind, $project) para análise de telemetria dos reatores Sanofi.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{db.reatores.aggregate}([\{\$match: \dots\}, \{\$group: \dots\}, \{\$project: \dots\}])$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Estratégia de Incorporação vs Referenciamento</span>
+              </div>
+              <div class="step-content">
+                <p>Documentos embutidos (Embedding) para leituras atômicas frequentes de sensores por lote.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Criação de Índices Multikey e Índices TTL</span>
+              </div>
+              <div class="step-content">
+                <p>Índices compostos {id_reator: 1, timestamp: -1} para suporte a consultas em janela deslizante.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Estágios de Agregação Analítica</span>
+              </div>
+              <div class="step-content">
+                <p>$match filtra anomalias térmicas; $group calcula média e desvio padrão em blocos de 5 minutos.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Projeção de Dados Enriquecidos</span>
+              </div>
+              <div class="step-content">
+                <p>$project reformata o esquema JSON para consumo imediato por dashboards operacionais.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão de Throughput</span>
+              </div>
+              <div class="step-content">
+                <p>Taxa de escrita sustentada de 42.000 documentos/s sem bloqueio transacional.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_2_cp2/grafico_resolucao.png" alt="Gráfico Modelagem NoSQL Orientada a Documentos com MongoDB" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp3" class="cp-section">
+        <div class="section-badge">CHECKPOINT 03 • 3ECR 2024</div>
+        <h2 class="section-title">Modelagem Wide-Column em Apache Cassandra e Teorema CAP</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp3')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp3" class="box-content">
+            <p>Dimensionar as tabelas CQL com chaves de partição e clustering keys balanceadas para assegurar escalabilidade linear e latência sub-milisegundo sob modelo AP (Disponibilidade e Tolerância à Partição).</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{PRIMARY KEY } ((id\_planta, ano\_mes), data\_hora, id\_sensor), \quad \text{Quorum} = \left\lfloor \frac{N}{2} \right\rfloor + 1$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Princípio Query-First</span>
+              </div>
+              <div class="step-content">
+                <p>No Cassandra, cada tabela é modelada exclusivamente para atender uma consulta específica sem JOINs.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Definição da Chave Composta de Partição</span>
+              </div>
+              <div class="step-content">
+                <p>Partition Key ((id_planta, ano_mes)) distribui as linhas homogeneamente no anel Murmur3Partitioner.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Ordenação Física com Clustering Keys</span>
+              </div>
+              <div class="step-content">
+                <p>Clustering Columns (data_hora DESC) organizam os dados sequencialmente no disco em SSTables.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Nível de Consistência Tunável</span>
+              </div>
+              <div class="step-content">
+                <p>Configuração de LOCAL_QUORUM garantindo leitura de dados atualizados sem travamento entre datacenters.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Arquitetural</span>
+              </div>
+              <div class="step-content">
+                <p>Latência média de leitura P99 inferior a 2,8 ms para séries temporais de 1 bilhão de registros.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_3_cp3/grafico_resolucao.png" alt="Gráfico Modelagem Wide-Column em Apache Cassandra e Teorema CAP" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp4" class="cp-section">
+        <div class="section-badge">CHECKPOINT 04 • 3ECR 2024</div>
+        <h2 class="section-title">Processamento Paralelo em Memória com Apache Spark e PySpark</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp4')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp4" class="box-content">
+            <p>Implementar job distribuído em PySpark para computar a correlação de Pearson e matriz de covariância entre variáveis de processo de 100 GB de logs industriais.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{DataFrame.groupBy}(\text{'lote'}).agg(\text{avg}('pressao'), \text{stddev}('temperatura')), \quad T_{Spark} \approx 0,1 \times T_{MapReduce}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Leitura Otimizada com Formato Parquet</span>
+              </div>
+              <div class="step-content">
+                <p>Uso de compressão Snappy e filtragem por projeção colunar (Column Pruning).</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Eliminação de Shuffles Ineficientes</span>
+              </div>
+              <div class="step-content">
+                <p>Aplicação de broadcast() em tabelas de dimensão de apoio com tamanho inferior a 100 MB.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Criação de DAG de Transformações Lazy</span>
+              </div>
+              <div class="step-content">
+                <p>O Catalyst Optimizer gera o plano físico otimizado antes do disparo das Actions.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Persistência em Memória (Cache / Persist)</span>
+              </div>
+              <div class="step-content">
+                <p>persist(StorageLevel.MEMORY_AND_DISK_SER) para reutilização de DataFrames intermediários.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Computacional</span>
+              </div>
+              <div class="step-content">
+                <p>Job executado em 42 segundos contra mais de 9 minutos em implementações baseadas em MapReduce em disco.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_4_cp4/grafico_resolucao.png" alt="Gráfico Processamento Paralelo em Memória com Apache Spark e PySpark" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp5" class="cp-section">
+        <div class="section-badge">CHECKPOINT 05 • 3ECR 2024</div>
+        <h2 class="section-title">Arquitetura Lambda / Kappa e Ingestão em Tempo Real com Kafka</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp5')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp5" class="box-content">
+            <p>Dimensionar os tópicos e grupos de consumidores Apache Kafka com replicação RF = 3 e semântica Exactly-Once para alimentar a camada de streaming da fábrica.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{Throughput} = \frac{N_{partições} \times \text{Bandwidth}_{broker}}{\text{Fator de Replicação}}, \quad \text{Semântica: Exactly-Once Processing}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Dimensionamento do Número de Partições</span>
+              </div>
+              <div class="step-content">
+                <p>Definição de 16 partições por tópico para permitir até 16 instâncias paralelas no Consumer Group.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Configuração de ACK e Idempotência</span>
+              </div>
+              <div class="step-content">
+                <p>acks=all e enable.idempotence=true prevenindo duplicação de mensagens de telemetria.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Camada de Processamento de Janelas de Tempo (Tumbling Windows)</span>
+              </div>
+              <div class="step-content">
+                <p>Structured Streaming com janelas de 1 minuto e marca d'água (watermarking) de 10 segundos.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Gravação na Camada Lakehouse (Delta Lake)</span>
+              </div>
+              <div class="step-content">
+                <p>Upsert via MERGE INTO na tabela Silver garantindo transações ACID sobre arquivos Parquet.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Operacional</span>
+              </div>
+              <div class="step-content">
+                <p>Latência fim-a-fim de apenas 320 ms entre a geração do dado no CLP e a disponibilidade analítica.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_5_cp5/grafico_resolucao.png" alt="Gráfico Arquitetura Lambda / Kappa e Ingestão em Tempo Real com Kafka" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp6" class="cp-section">
+        <div class="section-badge">CHECKPOINT 06 • 3ECR 2024</div>
+        <h2 class="section-title">Arquitetura Medallion: Camadas Bronze, Silver e Gold em Delta Lake</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp6')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp6" class="box-content">
+            <p>Implementar pipeline completo Medallion Architecture para transformar dados brutos não estruturados (Bronze), aplicar saneamento e tipagem (Silver) e agregar métricas de KPIs (Gold).</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{Bronze (Raw JSON)} \xrightarrow{\text{Data Cleaning}} \text{Silver (Clean Parquet)} \xrightarrow{\text{Business Agg}} \text{Gold (Curated KPIs)}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Ingestão Raw na Camada Bronze</span>
+              </div>
+              <div class="step-content">
+                <p>Armazenamento de payloads JSON brutos imutáveis com carimbo de data/hora de ingestão.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Higienização e Validação na Camada Silver</span>
+              </div>
+              <div class="step-content">
+                <p>Descarte de registros nulos, conversão estrita de tipos e validação de limites físicos.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Otimização de Armazenamento com Z-ORDER</span>
+              </div>
+              <div class="step-content">
+                <p>Execução de OPTIMIZE silver_telemetria ZORDER BY (id_equipamento, data) para compactação de arquivos pequenos.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Agregações de Negócio na Camada Gold</span>
+              </div>
+              <div class="step-content">
+                <p>Tabelas sumarizadas de OEE, disponibilidade e consumo energético para alimentação de Power BI.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão do Desafio Sanofi</span>
+              </div>
+              <div class="step-content">
+                <p>Lakehouse corporativo unificado suportando tanto BI analítico quanto modelos de IA preditiva.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_6_cp6/grafico_resolucao.png" alt="Gráfico Arquitetura Medallion: Camadas Bronze, Silver e Gold em Delta Lake" loading="lazy" />
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <footer>
+    <p>Bacharelado em Engenharia da Computação • <strong>FIAP</strong></p>
+    <p>Autor: Guilherme Macário (<a href="https://github.com/Guimemee" target="_blank">@Guimemee</a>) • Turma 3ECR • Ano 2024</p>
+    <p>Repositório Oficial: <a href="https://github.com/Guimemee/fiap-advanced-database-and-big-data" target="_blank">github.com/Guimemee/fiap-advanced-database-and-big-data</a></p>
+  </footer>
+
+  <script>
+    function copyText(elemId) {
+      const text = document.getElementById(elemId).innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => alert('Enunciado copiado para a área de transferência!'));
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('Enunciado copiado!');
+      }
+    }
+  </script>
+</body>
+</html>

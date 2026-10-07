@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Advanced Database & Big Data
+Turma 3ECR • Ano 2024
+Checkpoint 02: Modelagem NoSQL Orientada a Documentos com MongoDB
+
+ENUNCIADO ORIGINAL:
+Modelar coleções JSON flexíveis e construir pipelines de agregação (Aggregation Framework: $match, $group, $unwind, $project) para análise de telemetria dos reatores Sanofi.

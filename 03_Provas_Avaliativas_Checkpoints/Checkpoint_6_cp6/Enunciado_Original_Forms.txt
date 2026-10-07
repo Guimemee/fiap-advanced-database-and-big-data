@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Advanced Database & Big Data
+Turma 3ECR • Ano 2024
+Checkpoint 06: Arquitetura Medallion: Camadas Bronze, Silver e Gold em Delta Lake
+
+ENUNCIADO ORIGINAL:
+Implementar pipeline completo Medallion Architecture para transformar dados brutos não estruturados (Bronze), aplicar saneamento e tipagem (Silver) e agregar métricas de KPIs (Gold).
